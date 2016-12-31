@@ -1,0 +1,50 @@
+package main.java.jmt.gui.jsimgraph.JGraphMod.arrows;
+
+import main.java.jmt.common.functional.DeepClone;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.*;
+
+/**
+ * Created by raffaele on 12/18/16.
+ */
+public class JmtIncrementalEdgesMatrix {
+
+    Map<JmtMatrixCoordinate, List<Integer>> edges;
+
+    public JmtIncrementalEdgesMatrix() {
+        edges = new HashMap<>();
+    }
+
+    public Set<JmtMatrixCoordinate> keySet() {
+        return edges.keySet();
+    }
+
+    public List<Integer> get(JmtMatrixCoordinate key) {
+        return edges.get(key);
+    }
+
+    public List<Integer> put(JmtMatrixCoordinate key, List<Integer> value) {
+        if (containsKey(key)) {
+            get(key).addAll(value);
+        } else {
+            edges.put(key, value);
+        }
+
+        return get(key);
+    }
+
+    public boolean containsKey(JmtMatrixCoordinate key) {
+        return edges.containsKey(key);
+    }
+
+    public JmtIncrementalEdgesMatrix copy() {
+        JmtIncrementalEdgesMatrix newInstance = new JmtIncrementalEdgesMatrix();
+        newInstance.edges = DeepClone.deepClone(this.edges);
+        return newInstance;
+    }
+
+    public int size() {
+        return edges.size();
+    }
+}
