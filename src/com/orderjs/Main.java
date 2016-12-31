@@ -24,7 +24,7 @@ public class Main {
         matrix1.addMatrixCell(cell6);
 
         lines1.put(new JmtMatrixCoordinate(4, 0), new JmtMatrixCoordinate(0, 2));
-        lines1.put(new JmtMatrixCoordinate(3, 2), new JmtMatrixCoordinate(0, 3));
+        lines1.put(new JmtMatrixCoordinate(3, 2), new JmtMatrixCoordinate(1, 2));
 
         new JmtRoutingNew(matrix1, lines1);
 
