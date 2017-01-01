@@ -97,6 +97,8 @@ public class JmtRoutingNew { // implements Edge.Routing {
                 return accumulator;
             }
         }, new ArrayList<DynamicHash>(), lines.getEdges());*/
+        long free0 = Runtime.getRuntime().freeMemory();
+        long t0 = System.nanoTime();
         List<List<JmtIncrementalEdgesMatrix>> paths = Functional.reduce(new ReduceCallable<JmtEdgesMatrix.JmtEdge, List<List<JmtIncrementalEdgesMatrix>>>() {
             @Override
             public List<List<JmtIncrementalEdgesMatrix>> callable(JmtEdgesMatrix.JmtEdge value, List<List<JmtIncrementalEdgesMatrix>> accumulator, int pos) {
@@ -104,7 +106,8 @@ public class JmtRoutingNew { // implements Edge.Routing {
                 return accumulator;
             }
         }, new ArrayList<>(), edges.getEdges());
-
+        long t1 = System.nanoTime();
+        System.out.println("Phase1 (generation data) " + (t1 - t0) / 1000000 + " milliseconds. " + counter);
         // Phase 2
         /*List<List<JmtIncrementalEdgesMatrix>> matrices = Functional.reduce(new ReduceCallable<DynamicHash, List<List<JmtIncrementalEdgesMatrix>>>() {
             @Override
@@ -136,8 +139,13 @@ public class JmtRoutingNew { // implements Edge.Routing {
         // Phase 3
         //JmtEfficientCombination combo = new JmtEfficientCombination(mediator.getComponentsMatrix());
         //combo.getCombinations(matrices, -1, -1);
+        System.out.println("Phase2 (filtering) skipped.");
+        t0 = System.nanoTime();
         JmtEfficientCombination combo = new JmtEfficientCombination(components);
         JmtComponentsMatrix res = combo.getCombinations(paths, -1, -1).getResult();
+        t1 = System.nanoTime();
+        long free1 = Runtime.getRuntime().freeMemory();
+        System.out.println("Phase3 (combinations & score) " + (t1 - t0) / 1000000 + " milliseconds. Consumed memory: " + (free0 - free1) / 1024 + "KB.");
         System.out.println(res);
     }
 
