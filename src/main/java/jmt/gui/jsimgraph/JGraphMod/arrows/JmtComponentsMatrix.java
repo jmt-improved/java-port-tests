@@ -13,6 +13,8 @@ import java.util.Map;
 public class JmtComponentsMatrix {
     //private Mediator mediator;
     private int cellSize;
+    private int maxX = -1;
+    private int maxY = -1;
     private static final JmtMatrixCell EMPTY_CELL = new JmtMatrixCell(new JmtMatrixCoordinate(-1, -1), 0);
 
     private Map<JmtMatrixCoordinate, JmtMatrixCell> cells;
@@ -48,6 +50,14 @@ public class JmtComponentsMatrix {
 
     public void addMatrixCell(JmtMatrixCell cell) {
         cells.put(cell.getCoordinate(), cell);
+
+        if (cell.getCoordinate().getX() > maxX) {
+            maxX = cell.getCoordinate().getX();
+        }
+
+        if (cell.getCoordinate().getY() > maxY) {
+            maxY = cell.getCoordinate().getY();
+        }
     }
 
     public void removeMatrixCell(JmtMatrixCoordinate coord) { cells.remove(coord); }
@@ -80,5 +90,27 @@ public class JmtComponentsMatrix {
         m.cellSize = this.cellSize;
         m.cells = DeepClone.deepClone(this.cells);
         return m;
+    }
+
+    public boolean containsCell(JmtMatrixCoordinate coord) {
+        return cells.containsKey(coord);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("[ \n");
+        for(int y = 0; y <= maxY; y++) {
+            sb.append(" [ ");
+            for (int x = 0; x < maxX; x++) {
+                sb.append(getMatrixCell(new JmtMatrixCoordinate(x, y)).toString() + ", ");
+            }
+            sb.append(getMatrixCell(new JmtMatrixCoordinate(maxX, y)).toString());
+            sb.append(" ],\n");
+        }
+        sb.append("]\n");
+
+        return sb.toString();
     }
 }

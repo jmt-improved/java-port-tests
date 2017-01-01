@@ -1,7 +1,5 @@
 package main.java.jmt.gui.jsimgraph.JGraphMod.arrows;
 
-import main.java.jmt.common.functional.DynamicHash;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,8 +42,8 @@ class JmtPath  {
         return score;
     }
 
-    List<JmtIncrementalEdgesMatrix> allPaths(JmtPointerInterface pointer, JmtMatrixCoordinate coord,
-                               int level, AngleInfo angleInfo) {
+    List<JmtIncrementalEdgesMatrix> allPaths(JmtPointer pointer, JmtMatrixCoordinate coord,
+                                             int level, AngleInfo angleInfo) {
         List<JmtIncrementalEdgesMatrix> matrices = new ArrayList<>();
 
         if (solutionsFound > JmtRoutingNew.Configuration.PATHS_LIMITS) {
@@ -167,7 +165,7 @@ class JmtPath  {
         return matrices;
     }
 
-    private List<JmtIncrementalEdgesMatrix> nextStep(JmtPointerInterface pointer, JmtMatrixCoordinate coord, int level, AngleInfo angleInfo, Integer direction) {
+    private List<JmtIncrementalEdgesMatrix> nextStep(JmtPointer pointer, JmtMatrixCoordinate coord, int level, AngleInfo angleInfo, Integer direction) {
         switch (direction){
             case 1:
                 coord = coord.yIncrement(1);

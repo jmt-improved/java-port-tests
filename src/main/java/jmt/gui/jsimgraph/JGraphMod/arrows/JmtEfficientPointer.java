@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by raffaele on 12/19/16.
  */
-public class JmtEfficientPointer extends JmtPointerInterface {
+public class JmtEfficientPointer extends JmtPointer {
 
     public JmtEfficientPointer(JmtComponentsMatrix componentsMatrix, JmtIncrementalEdgesMatrix edgesMatrix) {
         super(componentsMatrix, edgesMatrix);
@@ -27,7 +27,7 @@ public class JmtEfficientPointer extends JmtPointerInterface {
         super(componentsMatrix);
     }
 
-    public JmtEfficientPointer(JmtPointerInterface other) {
+    public JmtEfficientPointer(JmtPointer other) {
         super(other);
     }
 

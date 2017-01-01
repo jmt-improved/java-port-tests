@@ -137,7 +137,8 @@ public class JmtRoutingNew { // implements Edge.Routing {
         //JmtEfficientCombination combo = new JmtEfficientCombination(mediator.getComponentsMatrix());
         //combo.getCombinations(matrices, -1, -1);
         JmtEfficientCombination combo = new JmtEfficientCombination(components);
-        combo.getCombinations(paths, -1, -1);
+        JmtComponentsMatrix res = combo.getCombinations(paths, -1, -1).getResult();
+        System.out.println(res);
     }
 
     private List<JmtIncrementalEdgesMatrix> findMatricesOfLine(JmtComponentsMatrix componentsMatrix, JmtEdgesMatrix lines, int i) {
