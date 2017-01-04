@@ -30,7 +30,7 @@ public class Main {
         JmtComponentsMatrix matrix1 = new JmtComponentsMatrix();
         JmtEdgesMatrix lines1 = new JmtEdgesMatrix();
 
-        JmtMatrixStationCell cell1 = new JmtMatrixStationCell(new JmtMatrixCoordinate(0, 0));
+        /*JmtMatrixStationCell cell1 = new JmtMatrixStationCell(new JmtMatrixCoordinate(0, 0));
         JmtMatrixStationCell cell2 = new JmtMatrixStationCell(new JmtMatrixCoordinate(1, 0));
         JmtMatrixStationCell cell3 = new JmtMatrixStationCell(new JmtMatrixCoordinate(3, 0));
         JmtMatrixStationCell cell4 = new JmtMatrixStationCell(new JmtMatrixCoordinate(0, 1));
@@ -62,8 +62,39 @@ public class Main {
         lines1.put(new JmtMatrixCoordinate(3, 2), new JmtMatrixCoordinate(1, 2));
 
         lines1.put(new JmtMatrixCoordinate(5, 1), new JmtMatrixCoordinate(0, 7));
-        lines1.put(new JmtMatrixCoordinate(1, 8), new JmtMatrixCoordinate(3, 4));
+        lines1.put(new JmtMatrixCoordinate(1, 8), new JmtMatrixCoordinate(3, 4));*/
 
+        JmtMatrixStationCell cell1 = new JmtMatrixStationCell(new JmtMatrixCoordinate(1, 10));
+        JmtMatrixStationCell cell2 = new JmtMatrixStationCell(new JmtMatrixCoordinate(2, 10));
+        JmtMatrixStationCell cell3 = new JmtMatrixStationCell(new JmtMatrixCoordinate(1, 11));
+        JmtMatrixStationCell cell4 = new JmtMatrixStationCell(new JmtMatrixCoordinate(2, 11));
+        JmtMatrixStationCell cell5 = new JmtMatrixStationCell(new JmtMatrixCoordinate(1, 12));
+        JmtMatrixStationCell cell6 = new JmtMatrixStationCell(new JmtMatrixCoordinate(2, 12));
+
+        JmtMatrixStationCell cell7 = new JmtMatrixStationCell(new JmtMatrixCoordinate(10, 5));
+        JmtMatrixStationCell cell8 = new JmtMatrixStationCell(new JmtMatrixCoordinate(11, 5));
+        JmtMatrixStationCell cell9 = new JmtMatrixStationCell(new JmtMatrixCoordinate(10, 6));
+        JmtMatrixStationCell cell10 = new JmtMatrixStationCell(new JmtMatrixCoordinate(11, 6));
+        JmtMatrixStationCell cell11 = new JmtMatrixStationCell(new JmtMatrixCoordinate(10, 7));
+        JmtMatrixStationCell cell12 = new JmtMatrixStationCell(new JmtMatrixCoordinate(11, 7));
+
+        matrix1.addMatrixCell(cell1);
+        matrix1.addMatrixCell(cell2);
+        matrix1.addMatrixCell(cell3);
+        matrix1.addMatrixCell(cell4);
+        matrix1.addMatrixCell(cell5);
+        matrix1.addMatrixCell(cell6);
+
+        matrix1.addMatrixCell(cell7);
+        matrix1.addMatrixCell(cell8);
+        matrix1.addMatrixCell(cell9);
+        matrix1.addMatrixCell(cell10);
+        matrix1.addMatrixCell(cell11);
+        matrix1.addMatrixCell(cell12);
+
+
+        lines1.put(new JmtMatrixCoordinate(3, 11), new JmtMatrixCoordinate(9, 6));
+        lines1.put(new JmtMatrixCoordinate(12, 6), new JmtMatrixCoordinate(0, 11));
 
         new JmtRoutingNew(matrix1, lines1);
 
